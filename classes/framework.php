@@ -3,14 +3,19 @@
 class Page {
 
 var $page;
+var $dossier_contenu;
 
-function __construct($template="generic")
+function __construct($template="generic", $dossier_contenu = "contenu")
 {
     $fichier = "template/".$template.".temp.html";
+
     if (!file_exists($fichier)){
         $fichier = "template/generic.temp.html";
     }
+
     $this->page = file_get_contents($fichier);
+    $this->dossier_contenu = $dossier_contenu;
+
 }
 
 function setTitre($titre)
@@ -26,10 +31,9 @@ function setDate($date)
 function setMenu($page)
 {
 
-    $dossier_contenu = "contenu";
 
     $menu = "<ul class='links'>";
-    if($d = opendir($dossier_contenu)){
+    if($d = opendir($this->dossier_contenu)){
         while($fichier = readdir($d))
         {
             if ($fichier[0] != "."){
@@ -60,12 +64,15 @@ function setContenu()
         $page = "hoMe";
     }
 
-    $fichier = "contenu/".$page.".html";
+    $fichier = $this->dossier_contenu."/".$page;
 
     $this->setMenu($page);
 
-    if (file_exists($fichier)){
-        $contenu = file_get_contents($fichier);
+    if (file_exists($fichier.".html")){
+        $contenu = file_get_contents($fichier.".html");
+    }else if (file_exists($fichier.".php")){
+        include_once($fichier.".php");
+        $contenu = controleur();
     }else{
         $contenu = "<h1>Erreur 404</h1>
         <p>La page $page n'existe pas, si vous pensez que c'est une erreur, merci de contacter l'administrateur.</p>";
