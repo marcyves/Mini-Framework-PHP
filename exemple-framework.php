@@ -2,7 +2,7 @@
 
 require_once("classes/framework.php");
 
-$ma_page = new Page("base");
+$ma_page = new Page("base", "content");
 
 $ma_page->setTitre("Vive le GRETA");
 
