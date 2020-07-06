@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * 
+ * Exemple de Mini framework PHP
+ * -----------------------------
+ * 
+ * (c) Marc Augier
+ * 
+ */
+
 class Page {
 
     var $page;
