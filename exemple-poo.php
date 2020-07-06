@@ -5,7 +5,7 @@
  * Exemple de Mini framework PHP
  * -----------------------------
  * 
- * (c) Marc Augier
+ * (c) 2020 Marc Augier
  * 
  */
 
