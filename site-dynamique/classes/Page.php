@@ -7,12 +7,20 @@ class Page
     private $theme     = "";
     private $template  = "";
     private $dossier_controleurs = "";
+    private $dossier_themes = "";
 
-    function __construct($page = "home", $theme = "html5up-massively", $template= "index", $dossier_controleurs = "controleur/")
+    function __construct(
+        $page = "home",
+        $theme = "html5up-massively",
+        $template= "index",
+        $dossier_controleurs = "controleur/",
+        $dossier_themes = "themes"
+        )
     {
         $this->theme               = $theme;
         $this->template            = $template;
         $this->dossier_controleurs = $dossier_controleurs;
+        $this->dossier_themes      = $dossier_themes;
 
         if (isset($_GET['page']))
         {
@@ -58,10 +66,10 @@ class Page
             unset($textes['template']);
         }
 
-        $fichier = $this->theme."/".$this->template.".twig";
+        $fichier = $this->dossier_themes."/".$this->theme."/".$this->template.".twig";
         $this->code_page = file_get_contents($fichier);
 
-        $this->remplaceLabel("theme", $this->theme);
+        $this->remplaceLabel("theme", $this->dossier_themes."/".$this->theme);
 
         $menu = "";
         if($d = opendir($this->dossier_controleurs))
