@@ -21,3 +21,28 @@ Les templates HTML sont écrits avec une syntaxe TWIG (très) simplifiée, il fa
 Un template peut hériter d'un autre (1 seul niveau d'héritage).
 
 Le pages du site doivent être créées dans le dossier `controleur` sous la forme d'une fonction `controleur` qui retourne dans un tableau les différentes variables du template.
+
+## Liens utiles
+
+### PHP
+- [PHP Standard Recommandation](https://www.php-fig.org/psr/)
+- [Composer](https://getcomposer.org/) pour gérer les dépendances d'un projet et les installer automatiquement.
+- [PHPUnit](https://phpunit.de/)
+- [Symfony](https://symfony.com/)
+
+### HTML et CSS
+- [Bootstrap](https://getbootstrap.com/)
+- [Bootswatch](https://bootswatch.com/)
+- [Shards](https://designrevision.com/downloads/shards/), Bootstrap, en mieux.
+
+### Javascript
+- [JQuery](https://jquery.com/)
+
+- [Web developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
+- [Javascript from scratch](https://github.com/naomihauret/js-stack-from-scratch/)
+- [Tutoriel Angular](https://www.dropbox.com/s/ad1va8ia9blf9mi/Capture%20d%27%C3%A9cran%202019-07-11%2020.44.57.png?dl=0)
+
+## Notice
+<p align="center"><img src="https://licensebuttons.net/l/by-sa/3.0/fr/88x31.png" alt="Licence"></p>
+
+Ces scripts sont mis à disposition selon les termes de la [Licence Creative Commons Attribution - Partage dans les Mêmes Conditions 3.0 France](https://creativecommons.org/licenses/by-sa/3.0/fr/).
