@@ -1,5 +1,14 @@
 <?php
 
+function afficheProblemeInstallation($msg)
+{
+    ?>
+    <h1>Erreur d'installation</h1>
+    <?php
+    echo $msg;
+    die();
+}
+
 class Page
 {
     private $code_page = "";
@@ -7,21 +16,23 @@ class Page
     private $theme     = "";
     private $template  = "";
     private $dossier_controleurs = "";
-    private $dossier_themes = "";
+    private $dossier_themes      = "";
 
-    function __construct(
-        $page = "home",
-        $theme = "html5up-massively",
-        $template= "index",
-        $dossier_controleurs = "controleur/",
-        $dossier_themes = "themes"
-        )
+    function __construct($page = "home", $theme = "html5up-massively", $template= "index", $dossier_controleurs = "controleurs", $dossier_themes = "themes")
     {
         $this->theme               = $theme;
         $this->template            = $template;
-        $this->dossier_controleurs = $dossier_controleurs;
-        $this->dossier_themes      = $dossier_themes;
-
+        if(is_dir($dossier_controleurs)){
+            $this->dossier_controleurs = $dossier_controleurs;
+        }else{
+            afficheProblemeInstallation("Dossier controleur");
+        }
+        if(is_dir($dossier_themes)){
+            $this->dossier_themes      = $dossier_themes;
+        }else{
+            afficheProblemeInstallation("Dossier themes");
+        }
+        
         if (isset($_GET['page']))
         {
             $page = $_GET['page'];
@@ -51,12 +62,16 @@ class Page
 
     function remplaceLabel($label, $texte)
     {
-        $this->code_page = str_replace("{{ ".trim($label)." }}",$texte, $this->code_page);
+        $this->code_page = str_replace("{{ $label }}",$texte, $this->code_page);
+
     }
 
     function prepare()
     {
-        include_once $this->dossier_controleurs.$this->page.".php";
+        if(!is_file($this->dossier_controleurs."/".$this->page.".php")){
+            afficheProblemeInstallation("Le contrôleur ".$this->page.".php"." n'existe pas");
+        }
+        include_once $this->dossier_controleurs."/".$this->page.".php";
         $textes = controleur();
 
         if (isset($textes['template']))
@@ -65,27 +80,34 @@ class Page
             unset($textes['template']);
         }
 
-        $fichier = $this->dossier_themes."/".$this->theme."/".$this->template.".twig";
-        $this->code_page = file_get_contents($fichier);
+        $dossier = $this->dossier_themes."/".$this->theme;
+
+        if(!is_file($dossier."/".$this->template.".twig"))
+        {
+            afficheProblemeInstallation("Template ".$this->template.".twig"." inexistante");
+        }
+        $this->code_page = file_get_contents($dossier."/".$this->template.".twig");
 
         // On vérifie si ce template hérite d'un parent
-        preg_match('/\{\%\s*extends\s*\"([^\%\}]*)\"\s*\%\}/',$this->code_page, $extends);
-        if (isset($extends[1])){
-            $code_block = $this->code_page;
-            $fichier_parent = $this->dossier_themes."/".$this->theme."/".$extends[1];
-            $this->code_page = file_get_contents($fichier_parent);
-            preg_match_all('/\{\%\s*block\s*([^\%\}]*)\s*\%\}/',$code_block, $blocks);
+        preg_match('/\{%\s*extends\s*\"([^%\}]*)\"\s*%\}/', $this->code_page, $extends);
+        if(isset($extends[1])){
+            $code_blocks = $this->code_page;
+            $this->code_page = file_get_contents($dossier."/".$extends[1]);
 
-            foreach ($blocks[1] as $block) {
-//                preg_match('/{% block '.trim($block).' %}(.+){% endblock %}/s',$code_block, $block_content);
-                preg_match('/{%\h*block\h*'.trim($block).'\h*%}\R((?:(?!{%\h*endblock\h*%}).*\R)*){%\h*endblock\h*%}/',$code_block, $block_content);
-                if (isset($block_content[1])){
+            preg_match_all('/\{%\s*block\s*([^%\}]*)\s*%\}/', $code_blocks, $blocks);
+
+            foreach ($blocks[1] as $block)
+            {
+                $block = trim($block);
+                preg_match('/{%\h*block\h*'.$block.'\h*%}\R((?:(?!{%\h*endblock\h*%}).*\R)*){%\h*endblock\h*%}/', $code_blocks, $block_content);
+                if(isset($block_content[1]))
+                {
                     $this->remplaceLabel($block, $block_content[1]);
                 }
-            }           
-        }
+            }
 
-        $this->remplaceLabel("theme", $this->dossier_themes."/".$this->theme);
+        }
+        $this->remplaceLabel("theme", $dossier);
 
         $menu = "";
         if($d = opendir($this->dossier_controleurs))
