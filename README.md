@@ -13,3 +13,11 @@ En plus des dossiers du template Massively, il y a 3 dossiers spécifiques à no
 - classes contient la librairie de base.
 - contenu contient la partie de contenu spécifique à chaque page du site.
 - template contient les templates de pages.
+
+## Utilisation du framework
+
+Le dossier themes contient les dossiers du ou des thèmes utilisés par le site. Chaque thème est constitué des ressources habituelles : images, fichiers css, javascript, etc. Et au moins d'un template HTML, sous la forme d'un fichier avec l'extension `twig`.
+Les templates HTML sont écrits avec une syntaxe TWIG (très) simplifiée, il faut en créer au minimum un qui sera utilisé par défaut pour toutes les pages du site. Chaque page peut toutefois appeler un template spécifique.
+Un template peut hériter d'un autre (1 seul niveau d'héritage).
+
+Le pages du site doivent être créées dans le dossier `controleur` sous la forme d'une fonction `controleur` qui retourne dans un tableau les différentes variables du template.
