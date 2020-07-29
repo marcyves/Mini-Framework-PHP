@@ -29,6 +29,7 @@ Le pages du site doivent être créées dans le dossier `controleur` sous la for
 - [Composer](https://getcomposer.org/) pour gérer les dépendances d'un projet et les installer automatiquement.
 - [PHPUnit](https://phpunit.de/)
 - [Symfony](https://symfony.com/)
+- [Laravel](https://laravel.com/)
 
 ### HTML et CSS
 - [Bootstrap](https://getbootstrap.com/)
