@@ -51,8 +51,7 @@ class Page
 
     function remplaceLabel($label, $texte)
     {
-        $this->code_page = str_replace("{{ $label }}",$texte, $this->code_page);
-
+        $this->code_page = str_replace("{{ ".trim($label)." }}",$texte, $this->code_page);
     }
 
     function prepare()
@@ -68,6 +67,23 @@ class Page
 
         $fichier = $this->dossier_themes."/".$this->theme."/".$this->template.".twig";
         $this->code_page = file_get_contents($fichier);
+
+        // On vérifie si ce template hérite d'un parent
+        preg_match('/\{\%\s*extends\s*\"([^\%\}]*)\"\s*\%\}/',$this->code_page, $extends);
+        if (isset($extends[1])){
+            $code_block = $this->code_page;
+            $fichier_parent = $this->dossier_themes."/".$this->theme."/".$extends[1];
+            $this->code_page = file_get_contents($fichier_parent);
+            preg_match_all('/\{\%\s*block\s*([^\%\}]*)\s*\%\}/',$code_block, $blocks);
+
+            foreach ($blocks[1] as $block) {
+//                preg_match('/{% block '.trim($block).' %}(.+){% endblock %}/s',$code_block, $block_content);
+                preg_match('/{%\h*block\h*'.trim($block).'\h*%}\R((?:(?!{%\h*endblock\h*%}).*\R)*){%\h*endblock\h*%}/',$code_block, $block_content);
+                if (isset($block_content[1])){
+                    $this->remplaceLabel($block, $block_content[1]);
+                }
+            }           
+        }
 
         $this->remplaceLabel("theme", $this->dossier_themes."/".$this->theme);
 
