@@ -49,6 +49,12 @@ Le pages du site doivent être créées dans le dossier `controleur` sous la for
 - [Javascript from scratch](https://github.com/naomihauret/js-stack-from-scratch/)
 - [Tutoriel Angular](https://www.dropbox.com/s/ad1va8ia9blf9mi/Capture%20d%27%C3%A9cran%202019-07-11%2020.44.57.png?dl=0)
 
+## vous avez aimé ?
+Pourquoi pas me remercier en m'offrant un café ?
+
+<a href="https://www.buymeacoffee.com/marcyves" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" width="210" ></a>
+
+Réalisé par [@marcyves](https://github.com/marcyves)
 ## Notice
 
 <p align="center"><img src="https://licensebuttons.net/l/by-sa/3.0/fr/88x31.png" alt="Licence"></p>
