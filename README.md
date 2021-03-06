@@ -1,6 +1,10 @@
 # Mini-Framework-PHP
 
-Ces fichiers peuvent être utilisés tels quels, toutefois ils ont été prévus comme support pour le cours : [Créer un site Web dynamique de A à Z avec PHP](https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC) qui se trouve chez Udemy.
+Ces fichiers peuvent être utilisés tels quels, toutefois ils ont été prévus comme support pour mes cours en ligne :
+
+* [Créer un site Web dynamique de A à Z avec PHP](https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC) qui se trouve chez Udemy.
+
+* [Développer un site Dynamique avec PHP et MySQL](https://fr.tuto.com/php/developper-un-site-dynamique-avec-php-et-mysql,153511.html) chez Tuto
 
 ## Construction d'un mini Framework PHP en 2 étapes :
 
