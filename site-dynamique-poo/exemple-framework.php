@@ -4,7 +4,7 @@ require_once("classes/framework.php");
 
 $ma_page = new Page("base", "content");
 
-$ma_page->setTitre("Le site à la framework");
+$ma_page->setTitre("Le site utilisant notre framework maison");
 
 $ma_page->setDate("10 juin 2020");
 
