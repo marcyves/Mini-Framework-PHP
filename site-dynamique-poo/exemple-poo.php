@@ -48,7 +48,7 @@ class Page {
 
 $ma_page = new Page();
 
-$ma_page->setTitre("Vive le GRETA");
+$ma_page->setTitre("Le site POO");
 $ma_page->setDate("10 juin 2020");
 $ma_page->setContenu("contenu.html");
 
