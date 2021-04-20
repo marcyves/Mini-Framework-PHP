@@ -76,7 +76,7 @@ function controleur()
 
       if(is_dir($dossier_produits)){
 
-        $tableau = "<tr>";
+        $tableau = "";
         $compte  =  0;
         if($d = opendir($dossier_produits))
         {
@@ -84,12 +84,15 @@ function controleur()
             {
                 if ($image[0] != "." && substr_compare($image, "mini_", 0,4))
                 {
+                    if ($compte == 0){
+                        $tableau .= "<ul class='features'>";
+                    }
                     if (!file_exists($dossier_produits."/mini_".$image)){
                         creationVignette($image,300,180);
                     }
 
                     if (file_exists($dossier_produits."/mini_".$image)){
-                        $vignette = '<td><img width="300" height="180" src="'.$dossier_produits."/mini_".$image.'"></td>';
+                        $vignette = '<img width="300" height="180" src="'.$dossier_produits."/mini_".$image.'"><h3>'.$image.'</h3>';
                     }else{
                         $vignette = '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="180" viewBox="0 0 300 180">
                         <rect fill="#ddd" width="300" height="180"/>
@@ -98,17 +101,17 @@ function controleur()
                       ';
                     }
                     
-                    $tableau .='<td>'.$vignette.'</td>';
+                    $tableau .='<li>'.$vignette.'</li>';
                     $compte++;
                     if ($compte >= 3){
                         $compte = 0;
-                        $tableau .= "</tr><tr>";
+                        $tableau .= "</ul>";
                     }
                 }
             }
         }
 
-        $tableau = "<table>$tableau</table>";
+//        $tableau = "<table>$tableau</table>";
     }else{
         $tableau = "<table><tr><td>pas de produits</tr></table>";
     }
