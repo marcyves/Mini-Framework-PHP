@@ -9,6 +9,26 @@ function afficheProblemeInstallation($msg)
     die();
 }
 
+function connectionDatabase(){
+    // Connexion à la base de données
+    $db_host = "localhost";
+    $db_user = "blog";
+    $db_pass = "top_secret";
+    $db_name = "blog";
+
+    // modele.inc.php
+   $db = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+    if ($db->connect_errno){
+        afficheProblemeInstallation("Erreur de connexion à la base de données<br>".
+            "Erreur : ".$db->connect_error.
+            " code (".$db->connect_errno.")"
+        );
+    }
+
+    return $db;
+}
+
 class Page
 {
     private $code_page = "";
@@ -17,6 +37,7 @@ class Page
     private $template  = "";
     private $dossier_controleurs = "";
     private $dossier_themes      = "";
+    private $db = "";
 
     function __construct($page = "home", $theme = "html5up-massively", $template= "index", $dossier_controleurs = "controleurs", $dossier_themes = "themes")
     {
@@ -32,6 +53,8 @@ class Page
         }else{
             afficheProblemeInstallation("Dossier themes");
         }
+
+        $this->db = connectionDataBase();
         
         if (isset($_GET['page']))
         {
@@ -72,7 +95,8 @@ class Page
             afficheProblemeInstallation("Le contrôleur ".$this->page.".php"." n'existe pas");
         }
         include_once $this->dossier_controleurs."/".$this->page.".php";
-        $textes = controleur();
+
+        $textes = controleur($this->db);
 
         if (isset($textes['template']))
         {
