@@ -9,12 +9,32 @@ function afficheProblemeInstallation($msg)
     die();
 }
 
+function connectionDataBase()
+{
+    // Connexion à la base de données
+    $db_host = "localhost";
+    $db_user = "blog";
+    $db_pass = "top_secret";
+    $db_name = "blog";
+
+    $db = "rien";
+
+    try{
+       $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_user, $db_pass);
+    } catch (PDOException $e) {
+        echo "Erreur de connexion SQL : " . $e->getMessage() . "<br/>";
+        //die();
+    }
+
+    return $db;
+}
 class Page
 {
     private $code_page = "";
     private $page      = "";
     private $theme     = "";
     private $template  = "";
+    private $db        = "";
     private $dossier_controleurs = "";
     private $dossier_themes      = "";
 
@@ -38,6 +58,8 @@ class Page
             $page = $_GET['page'];
         }
         $this->page = $page;
+
+        $this->db = connectionDataBase();
     }
 
     function setTheme($theme)
@@ -72,7 +94,7 @@ class Page
             afficheProblemeInstallation("Le contrôleur ".$this->page.".php"." n'existe pas");
         }
         include_once $this->dossier_controleurs."/".$this->page.".php";
-        $textes = controleur();
+        $textes = controleur($this->db);
 
         if (isset($textes['template']))
         {
