@@ -2,6 +2,9 @@
 
 {% block contenu %}
 
-<h2>{{ titre }}</h2>
-<p>{{ texte }} ({{ date }})<p>
+{% for article in articles %}
+    <h2>{{ article.titre }}</h2>
+    <p>{{ article.texte }} ({{ article.date_creation }})<p>
+{% endfor %}
+
 {% endblock %}
