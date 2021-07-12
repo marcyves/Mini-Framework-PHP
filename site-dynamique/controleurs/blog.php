@@ -1,4 +1,16 @@
 <?php
+/**
+ * 
+ * Mini Framework PHP
+ * -----------------------------
+ * 
+ * Vous aimez ?
+ * Pourquoi pas me remercier en m'offrant un café ?
+ * https://www.buymeacoffee.com/marcyves 
+ * 
+ * (c) 2020 Marc Augier
+ * 
+ */
 
 function controleur($db)
 {
