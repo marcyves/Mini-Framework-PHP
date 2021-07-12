@@ -4,7 +4,7 @@ function controleur($db)
 {
    
     // SELECT * FROM articles;
-    $sql = "SELECT titre, texte, date_creation FROM articles";
+    $sql = "SELECT titre, texte AS description , date_creation AS date FROM articles";
 
     $result = $db->query($sql);
     $lignes = $result->fetchAll(PDO::FETCH_ASSOC);
