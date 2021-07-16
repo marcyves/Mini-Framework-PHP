@@ -22,6 +22,7 @@ function afficheProblemeInstallation($msg)
     die();
 }
 
+/*
 function connectionDataBase()
 {
     // Connexion à la base de données
@@ -41,6 +42,8 @@ function connectionDataBase()
 
     return $db;
 }
+*/
+
 class Page
 {
     private $code_page = "";
@@ -72,7 +75,7 @@ class Page
         }
         $this->page = $page;
 
-        $this->db = connectionDataBase();
+        //        $this->db = connectionDataBase();
     }
 
     function setTheme($theme)
@@ -107,7 +110,8 @@ class Page
         }
         include_once $this->dossier_controleurs."/".$this->page.".php";
         // On exécute le contrôleur et récupère le tableau des valeurs à intégrer dans le template pour préparer la page
-        $textes = controleur($this->db);
+//        $textes = controleur($this->db);
+        $textes = controleur();
 
         // On change de la template par défaut
         if (isset($textes['template']))

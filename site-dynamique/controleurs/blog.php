@@ -12,20 +12,19 @@
  * 
  */
 
-function controleur($db)
-{
-   
-    // SELECT * FROM articles;
-    $sql = "SELECT titre, texte AS description , date_creation AS date FROM articles";
+include "modèles/blogModèle.php";
 
-    $result = $db->query($sql);
-    $lignes = $result->fetchAll(PDO::FETCH_ASSOC);
+function controleur()
+{
+
+    $db = new Blog();
+    $lignes = $db->getArticles();
 
     return [
         'template' => 'blog',
         'titre' => "Le blog",
         'sous-titre' => "En direct du Web",
-        'titre-court' => "Les deniers articles",
+        'titre-court' => "Les derniers articles",
         'articles' => $lignes,
         'pied-de-page' => "Voici la fin de la page"
     ];
