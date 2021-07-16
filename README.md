@@ -2,7 +2,7 @@
 
 ## Présentation
 
-PINS (PINS IS NOT SYMFONY) est un mini framework qui se construit petit à petit en fonction de l'avancement de mes cours en ligne. Ces fichiers peuvent donc être utilisés tels quels, mais il n'y a pas de documentation, si ce n'est les explications de ce ReadMe et je n'ai pas prévu d'en faire une dans un futur proche. Ils ont en fait été prévus comme support pour mes cours en ligne sui se trouvent sur 2 plateformes différentes :
+PINS (PINS IS NOT SYMFONY) est un mini framework qui se construit petit à petit en fonction de l'avancement de mes cours en ligne. Ces fichiers peuvent donc être utilisés tels quels, mais il n'y a pas de documentation, si ce n'est les explications de ce ReadMe et je n'ai pas prévu d'en faire une dans un futur proche. Ils ont en fait été prévus comme support pour mes cours que vous pouvez trouver sur 2 plateformes différentes :
 
 * [Créer un site Web dynamique de A à Z avec PHP](https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC) se trouve chez Udemy.
 
