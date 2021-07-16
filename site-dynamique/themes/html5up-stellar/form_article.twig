@@ -1,0 +1,27 @@
+{% extends "index.twig" %}
+
+{% block contenu %}
+<!-- Form -->
+<section>
+<h2>Création d'un nouvel article</h2>
+    <form method="get" action="index.php">
+        <input type="hidden" name="page" value="blog">
+        <input type="hidden" name="cmd" value="insert">
+        <div class="row gtr-uniform">
+            <div class="col-12">
+                <input type="text" name="titre" id="demo-name" value="" placeholder="Titre de l'article" />
+            </div>
+            <div class="col-12">
+                <textarea name="description" id="demo-message" placeholder="Le texte de l'article" rows="6"></textarea>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Créer article" class="primary" /></li>
+                    <li><input type="reset" value="Effacer" /></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

@@ -21,12 +21,35 @@ class Blog
     function getArticles()
     {
        // SELECT * FROM articles;
-       $sql = "SELECT titre, texte AS description , date_creation AS date FROM articles";
+       $sql = "SELECT id, titre, texte AS description , date_creation AS date FROM articles";
 
        $result = $this->db->query($sql);
        $lignes = $result->fetchAll(PDO::FETCH_ASSOC);
 
        return $lignes;
+    }
+
+    function getArticleById($id)
+    {
+       // SELECT * FROM articles;
+       $sql = "SELECT titre, texte AS description , date_creation AS date FROM articles WHERE id = '$id'";
+
+       $result = $this->db->query($sql);
+       $lignes = $result->fetchAll(PDO::FETCH_ASSOC);
+
+       return $lignes;
+    }
+
+    function effaceArticle($id)
+    {
+        $sql = "DELETE FROM articles WHERE id='$id'";
+        $result = $this->db->query($sql);
+    }
+   
+    function insertArticle($titre, $description)
+    {
+        $sql = "INSERT INTO articles (titre, texte) VALUES ('".htmlspecialchars($titre)."', '".htmlspecialchars($description)."')";
+        $result = $this->db->query($sql);
     }
    
 }

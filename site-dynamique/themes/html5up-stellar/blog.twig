@@ -1,10 +1,15 @@
 {% extends "index.twig" %}
 
 {% block contenu %}
-
+<a href="?page=blog&cmd=ajouter" class="icon alt fa fa-plus"><span class="label">Ajouter</span></a>
+<hr>
 {% for article in articles %}
     <h2>{{ article.titre }}</h2>
-    <p>{{ article.description }} ({{ article.date }})<p>
+    <blockquote>{{ article.description }} ({{ article.date }})</blockquote>
+    <br>
+    <a href="?page=blog&id={{ article.id }}&cmd=modifier" class="icon alt fa fa-edit"><span class="label">Modifier</span></a>
+    <a href="?page=blog&id={{ article.id }}&cmd=effacer"  class="icon alt fa fa-trash"><span class="label">Effacer</span></a>
+    <hr>
 {% endfor %}
 
 {% endblock %}
