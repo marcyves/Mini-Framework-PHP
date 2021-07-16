@@ -1,10 +1,14 @@
-# Mini-Framework-PHP
+# PINS, un Mini-Framework-PHP
 
-Ces fichiers peuvent être utilisés tels quels, toutefois ils ont été prévus comme support pour mes cours en ligne :
+## Présentation
 
-* [Créer un site Web dynamique de A à Z avec PHP](https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC) qui se trouve chez Udemy (version 2020).
+PINS (PINS IS NOT SYMFONY) est un mini framework qui se construit petit à petit en fonction de l'avancement de mes cours en ligne. Ces fichiers peuvent donc être utilisés tels quels, mais il n'y a pas de documentation, si ce n'est les explications de ce ReadMe et je n'ai pas prévu d'en faire une dans un futur proche. Ils ont en fait été prévus comme support pour mes cours en ligne sui se trouvent sur 2 plateformes différentes :
 
-* [Développer un site Dynamique avec PHP et MySQL](https://fr.tuto.com/php/developper-un-site-dynamique-avec-php-et-mysql,153511.html) chez Tuto (version 2021).
+* [Créer un site Web dynamique de A à Z avec PHP](https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC) se trouve chez Udemy.
+
+* [Développer un site Dynamique avec PHP et MySQL](https://fr.tuto.com/php/developper-un-site-dynamique-avec-php-et-mysql,153511.html) chez Tuto.
+
+Le cours est né sur UDEMY, mais j'essaie maintenant de maintenir les 2 plateformes au même niveau.
 
 ## Construction d'un mini Framework PHP en 2 étapes :
 
@@ -13,8 +17,6 @@ Ces fichiers peuvent être utilisés tels quels, toutefois ils ont été prévus
 3. Le troisième dossier est l'aboutissement du projet. Le framework étudié dans le second dossier est cette fois plus abouti et nettoyé de tous les fichiers de travail. Le noyau du framework est maintenant stabilisé, ce qui permet d'étudier comment ajouter des pages, des fonctionnalités et continuer à développer de nouvelles extensions au framework.
 La branche `master` contient la version de base, sans le blog et les accès base de données.
 Une branche spécifique `MySQL-POO` est dédiée à la partie MySQL.
-
-TODO: Trouver un nom à ce framework !
 
 TODO: Tout réorganiser dans des branches pour plus de clarté.
 
