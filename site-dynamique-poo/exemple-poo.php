@@ -1,46 +1,44 @@
 <?php
 
 /**
- * 
+ *
  * Exemple de Mini framework PHP
  * -----------------------------
- * 
+ *
  * (c) 2020 Marc Augier
- * 
+ *
  */
 
-class Page {
+class Page
+{
+    public $page;
 
-    var $page;
-
-    function __construct($template="generic.temp.html")
+    public function __construct($template="generic.temp.html")
     {
         $this->page = file_get_contents($template);
-
     }
 
-    function setTitre($titre)
+    public function setTitre($titre)
     {
         $this->prepare_page("titre", $titre);
     }
 
-    function setDate($date)
+    public function setDate($date)
     {
         $this->prepare_page("date", $date);
     }
 
-    function setContenu($fichier)
+    public function setContenu($fichier)
     {
         $contenu = file_get_contents($fichier);
         $this->prepare_page("contenu", $contenu);
-
     }
-    function prepare_page($label, $texte){
-
+    public function prepare_page($label, $texte)
+    {
         $this->page = str_replace("{{ $label }}", $texte, $this->page);
     }
 
-    function affiche_page()
+    public function affiche_page()
     {
         echo $this->page;
     }
