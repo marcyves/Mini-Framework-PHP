@@ -3,7 +3,7 @@
 ==============================================================================
 
  Ce script fait partie d'une série d'exemples de code mise à disposition
-  sur https://github.com/marcyves/Mini-Framework-PHP 
+  sur https://github.com/marcyves/Mini-Framework-PHP
   en support du cours https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC
 
 
@@ -11,9 +11,7 @@
 
 ==============================================================================
 */
-	$titre = "À propos";
-	$soustitre = "Quelques informations personnelles";
-	$image = "pic02";
-	$contenu = "Un brève présentation"; 
-
-?>
+    $titre = "À propos";
+    $soustitre = "Quelques informations personnelles";
+    $image = "pic02";
+    $contenu = "Un brève présentation";
