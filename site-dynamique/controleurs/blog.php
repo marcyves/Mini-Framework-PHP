@@ -1,31 +1,55 @@
 <?php
 /**
- * 
+ *
  * Mini Framework PHP
  * -----------------------------
- * 
+ *
  * Vous aimez ?
  * Pourquoi pas me remercier en m'offrant un café ?
- * https://www.buymeacoffee.com/marcyves 
- * 
+ * https://www.buymeacoffee.com/marcyves
+ *
  * (c) 2020 Marc Augier
- * 
+ *
  */
 
-function controleur($db)
-{
-   
-    // SELECT * FROM articles;
-    $sql = "SELECT titre, texte AS description , date_creation AS date FROM articles";
+include "modèles/blogModèle.php";
 
-    $result = $db->query($sql);
-    $lignes = $result->fetchAll(PDO::FETCH_ASSOC);
+function controleur()
+{
+    $template = "blog";
+    $db = new Blog();
+
+    if (isset($_GET['cmd'])) {
+        switch ($_GET['cmd']) {
+            case "modifier":
+                $titre_court = "Détails";
+                $lignes = $db->getArticleById($_GET['id']);
+            break;
+            case "effacer":
+                $db->effaceArticle($_GET['id']);
+                $titre_court = "Les derniers articles après effacement";
+                $lignes = $db->getArticles();
+            break;
+            case "insert":
+                $db->insertArticle($_GET['titre'], $_GET['description']);
+                $titre_court = "Les derniers articles après ajout";
+                $lignes = $db->getArticles();
+            break;
+            case "ajouter":
+                $template = 'form_article';
+                $titre_court = "Création nouvel article";
+            break;
+            }
+    } else {
+        $titre_court = "Les derniers articles";
+        $lignes = $db->getArticles();
+    }
 
     return [
-        'template' => 'blog',
+        'template' => $template,
         'titre' => "Le blog",
         'sous-titre' => "En direct du Web",
-        'titre-court' => "Les deniers articles",
+        'titre-court' => $titre_court,
         'articles' => $lignes,
         'pied-de-page' => "Voici la fin de la page"
     ];

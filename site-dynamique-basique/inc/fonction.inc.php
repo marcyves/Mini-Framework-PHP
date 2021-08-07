@@ -3,7 +3,7 @@
 ==============================================================================
 
  Ce script fait partie d'une série d'exemples de code mise à disposition
-  sur https://github.com/marcyves/Mini-Framework-PHP 
+  sur https://github.com/marcyves/Mini-Framework-PHP
   en support du cours https://www.udemy.com/course/votre-site-web-en-php/?referralCode=6052B85326FD5DDC78EC
 
 
@@ -12,7 +12,8 @@
 ==============================================================================
 */
 
-function debutPage($titre, $active){
+function debutPage($titre, $active)
+{
     ?>
         <!DOCTYPE HTML>
         <!--
@@ -42,21 +43,21 @@ function debutPage($titre, $active){
                             <nav id="nav">
                                 <ul class="links">
     <?php
-    if ($d = @opendir("pages/")){
-        while($fichier = readdir($d)){
-            if ($fichier[0] != "."){
+    if ($d = @opendir("pages/")) {
+        while ($fichier = readdir($d)) {
+            if ($fichier[0] != ".") {
                 $page = substr($fichier, 0, -4);
-                $label = str_replace("_"," ", $page);
-                if ($page == $active){
+                $label = str_replace("_", " ", $page);
+                if ($page == $active) {
                     $t = " class='active'";
-                }else{
+                } else {
                     $t = "";
                 }
                 echo '<li'.$t.'><a href="generic.php?page='.$page.'">'.$label.'</a></li>';
             }
-        }    
+        }
     }
-        // echo '<li class="active"><a href="generic.php">Generic Page</a></li>';
+    // echo '<li class="active"><a href="generic.php">Generic Page</a></li>';
     ?>                          </ul>
                                 <ul class="icons">
                                     <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -68,7 +69,8 @@ function debutPage($titre, $active){
             <?php
 }
 
-function contenuPage($titre, $soustitre, $image, $contenu){
+function contenuPage($titre, $soustitre, $image, $contenu)
+{
     ?>
         <!-- Main -->
         <div id="main">
@@ -85,10 +87,11 @@ function contenuPage($titre, $soustitre, $image, $contenu){
             </section>
 
         </div>
-    <?php    
+    <?php
 }
 
-function finPage(){
+function finPage()
+{
     ?>
         <!-- Footer -->
         <footer id="footer">
